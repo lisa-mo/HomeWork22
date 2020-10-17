@@ -75,6 +75,15 @@ public class MonitorComparisonTest extends BaseTest {
         Assert.assertTrue(elementIsNotPresent("//span [@class='header-actions__button-counter']"));
 
 //  4. Add monitor to comparison. Verify icon (1) appears in header close to comparison image (scales). Remember price, name
+//        String banner = "[class='exponea-close-cross']";
+//        if (isCSSElementPresent(banner)) {
+//            wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(banner)));
+//            wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector(banner)));
+//            driver.findElement(By.cssSelector(banner)).click();
+//        } else {}
+        WebElement tabLinkToWait = driver.findElement(By.cssSelector("a.tabs__link"));
+        scrollToElement(tabLinkToWait);
+
         driver.findElement(By.className("compare-button")).click();
 
         String scalesWithCounter = "//li[3]//*[@class='header-actions__button-counter']";
@@ -111,6 +120,9 @@ public class MonitorComparisonTest extends BaseTest {
         waitForPageLoaded();
 
 //  7. Add second monitor to comparison. Verify icon (2) appears in header close to comparison image (scales). Remember price, name
+        WebElement codeToWait = driver.findElement(By.xpath("//span[@class='product__code-accent']"));
+        scrollToElement(codeToWait); //span[@class="product__code-accent"]
+
         driver.findElement(By.cssSelector("button.compare-button")).click();
         waitForPageLoaded();
 
